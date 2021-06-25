@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+// 1. CLASS DEFINITION OF LINKED LIST
+class Node{
+    public:
+    int data;
+    Node * next;
+    
+    Node(int n)
+    {
+        this->data=n;
+	this->next=NULL;
+    }
+};
+
+
+// 2. PRINTING ALL THE ELEMENTS.
+void print(Node *head){
+    Node *temp=head;
+    while(temp)
+    {
+        cout<<temp->data<<", ";
+        temp=temp->next;
+    }
+    
+}
+
+
+int main(){
+   int n;
+   
+// 3. STATICALLY DECLARATION AND THEN PRINTING.
+    Node n1(1);
+    Node * head=&n1;
+    Node n2(1);
+    Node n3(1);
+    Node n4(1);
+    n1.next=&n2;
+    n2.next=&n3;
+    n3.next=&n4;
+    n4.next=NULL;
+    
+    print(head);
+    return 0;
+}
+
+
+

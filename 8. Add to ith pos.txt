@@ -1,0 +1,100 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+using namespace std;
+class Node
+{
+    public:
+    int val;
+    Node *next;
+    Node(int i)
+    {
+        this->val=i;
+        this->next=NULL;
+    }
+};
+
+void print(Node *head)
+{
+    Node *temp = head;
+    cout<<endl;
+    while(temp)
+    {
+        cout<<temp->val<<" ";
+        temp=temp->next;
+    }
+}
+Node * insert(Node * head,int i,int n)
+{
+    Node *newNode = new Node(n),*temp=head;
+    if(i==0)
+    {
+        newNode->next=head;
+        head=newNode;
+        cout<<"Added to pos: 0"<<endl;
+        return head;
+    }
+    int count=0;
+    while(temp && count<i-1)
+    {
+        temp=temp->next;
+        count++;
+        // 
+    }
+    
+    if(temp!=NULL)
+    {
+        newNode->next = temp->next;
+        temp->next=newNode;
+        cout<<"Added to pos: "<<i <<endl;
+    }
+    else
+        cout<<"Out of bound";
+    
+    return head;
+    
+}
+
+int main()
+{
+    Node *head=NULL,*tail=NULL;
+    int a[5]={1,2,3,4,5};
+    int i=0;
+    while(i<5)
+    {
+        // Node newNode(a[i++]);
+        Node *newNode= new Node(a[i++]);
+        // cout<<"newNode->val: "<<newNode->val<<"  ";
+        
+        
+        if(head==NULL)
+        {
+            // head=&newNode;
+            // tail=&newNode;
+            head=newNode;
+            tail=newNode;
+        }
+        else
+        {
+            tail->next=newNode;
+            tail=tail->next;
+        }
+    }
+    print(head);
+
+    head= insert(head,0,99);
+    head= insert(head,1,199);
+    head= insert(head,2,299);
+    head= insert(head,9,399);
+    
+    print(head);
+    
+
+    return 0;
+}

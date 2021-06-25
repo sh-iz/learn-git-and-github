@@ -1,0 +1,16 @@
+void findNode(Node* head, int val)
+{
+    if(head==NULL)
+    {
+        cout<<endl<<val<<" not found";
+        return;
+    }
+    else if(head->val == val)
+    {
+        cout<<endl<<val<<" is present in the LL";
+    }
+    else{
+        findNode(head->next,val);
+    }
+    
+}

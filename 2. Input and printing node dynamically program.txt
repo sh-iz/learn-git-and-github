@@ -1,0 +1,173 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node * next;
+    Node () {}
+    Node(int n)
+    {
+        this->data=n;
+    }
+};
+
+void print(Node *head){
+    Node *temp=head;
+    while(temp)
+    {
+        if(temp->next)
+            cout<<temp->data<<"->";
+        else
+            cout<<temp->data;
+        temp=temp->next;
+    }
+
+}
+Node *takeInput(Node *head){
+    char c='a';
+    while(c=='a')
+    {
+        cout<<"\nEnter the number: ";
+        int num;
+        cin>>num;
+        if(head==NULL)
+        {
+            Node *n = new Node(num);
+            head = n;
+        }
+        else{
+            Node *temp=head;
+            Node *n = new Node(num);
+            while(temp->next)
+                temp=temp->next;
+            
+            temp->next=n;
+        }
+        
+        cout<<"\n Enter 'a' to keep entering the data : ";
+        cin>>c;
+    }
+    
+    return head;
+}
+int main(){
+   char s;
+   cout<<"a. Input\n";
+   cout<<"b. Printing \n";
+   cout<<"Enter any other key to Exit \n";
+   cin>>s;
+   Node *head=NULL;
+
+   while(s=='a' || s=='b')
+   {
+       if(s=='a'){
+        head = takeInput(head);
+        cout<<endl<<"***************Adding Done***************"<<endl;
+       }
+       if (s=='b')
+       {
+           print(head);
+           cout<<endl<<"************Printing Done*************"<<endl;
+       }
+       cout<<"a. Input\n";
+       cout<<"b. Printing \n";
+       cout<<"Enter any other key to Exit \n";
+       cin>>s;
+   }
+    return 0;
+}
+
+////////////////////////////////////////APPROACH 2 USING TAIL RATHER THAN TRAVERSING EVERY TIME TILL THE END//////////////////
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node * next;
+    Node () {}
+    Node(int n)
+    {
+        this->data=n;
+        this->next=NULL;
+    }
+};
+
+void print(Node *head){
+    Node *temp=head;
+    while(temp)
+    {
+        if(temp->next)
+            cout<<temp->data<<"->";
+        else
+            cout<<temp->data;
+        temp=temp->next;
+    }
+
+}
+Node * takeInput(Node * head){
+    char c='a';
+    Node *tail=NULL;
+    Node *temp=head;
+    
+    if(head){
+        while(temp->next)
+            temp=temp->next;
+        tail=temp;
+    }
+    else tail=head;
+    
+    while(c=='a')
+    {
+        cout<<"\nEnter the number: ";
+        int num;
+        cin>>num;
+        Node *n = new Node(num);
+        if(head==NULL)
+        {
+            head = n;
+            tail = n;
+        }
+        else{
+            tail->next=n;
+            tail=tail->next;
+        }
+        
+        cout<<"\n Enter 'a' to keep entering the data : ";
+        cin>>c;
+    }
+    
+    return head;
+}
+int main(){
+   char s;
+   cout<<"a. Input\n";
+   cout<<"b. Printing \n";
+   cout<<"Enter any other key to Exit \n";
+   cin>>s;
+   Node *head=NULL;
+
+   while(s=='a' || s=='b')
+   {
+       if(s=='a'){
+        head = takeInput(head);
+        cout<<endl<<"***************Adding Done***************"<<endl;
+       }
+       if (s=='b')
+       {
+           print(head);
+           cout<<endl<<"************Printing Done*************"<<endl;
+       }
+       cout<<"a. Input\n";
+       cout<<"b. Printing \n";
+       cout<<"Enter any other key to Exit \n";
+       cin>>s;
+   }
+    return 0;
+}
+
+
+
+
+
